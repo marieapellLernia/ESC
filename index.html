@@ -9,6 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='output.css'>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -44,38 +45,15 @@
 
     <div class="overlay" id="overlay"></div>
 
-    <section class="top">
-        <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
-        <div class="buttons">
-            <button class="btn1" onclick="loadChallengesPage()">On-site challenge</button>
-            <button class="btn2" onclick="loadChallengesPage()">Online challenges</button>
-        </div>
-    </section>
-    <section class="reviews">
-        <div class="review">
-            <img src="img/7a698a6fd15c9330d95c77c66222ba4a4eadd83f.png">
-            <div class="quote-container">
-                <p class="quote">
-                    This is a quote about how amazing this place is and how much fun me and my friends had when we tried
-                    it
-                </p>
-                <p class="author">John Doe, visited us in September 2021</p>
-            </div>
-        </div>
-        <div class="reviewDesktop">
-            <img src="img/7a698a6fd15c9330d95c77c66222ba4a4eadd83f.png">
-            <div class="quote-container">
-                <p class="quote">
-                    This is a quote about how amazing this place is and how much fun me and my friends had when we tried
-                    it
-                </p>
-                <p class="author">John Doe, visited us in September 2021</p>
-            </div>
-        </div>
+    <section class="challengesFilter">
+        <h1>Our challenges</h1>
+        <button class="filterBtn">Filter challenges</button>
+         <div id="filterContainer"></div>
+        
     </section>
     <section class="panel">
-        <h1>Popular challenges right now</h1>
         <div class="cardContainer">
+            <div id="bookRoomModal" class="modal"></div>
             <article class="card">
                 <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
                 <div class="cardContent">
@@ -91,7 +69,61 @@
                     <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
                         Nemo nocere tibi erit, et non inimicos, et.
                     </p>
-                    <button>Book this room</button>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
                 </div>
             </article>
             <article class="card">
@@ -109,7 +141,7 @@
                     <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
                         Nemo nocere tibi erit, et non inimicos, et.
                     </p>
-                    <button>Book this room</button>
+                    <button class="bookThisRoom">Book this room</button>
                 </div>
             </article>
             <article class="card">
@@ -127,40 +159,174 @@
                     <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
                         Nemo nocere tibi erit, et non inimicos, et.
                     </p>
-                    <button>Book this room</button>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button class="bookThisRoom">Book this room</button>
+                </div>
+            </article>
+             <article class="card">
+                <img src="img/0f85bcb7b31d0d0ae702ebc565f4c0483e706cf4.png">
+                <div class="cardContent">
+                    <h3>Title of room (on-site)</h3>
+                    <div class="rating">
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-solid fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="fa-regular fa-star"></span>
+                        <span class="participants">2–6 participants</span>
+                    </div>
+                    <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam.
+                        Nemo nocere tibi erit, et non inimicos, et.
+                    </p>
+                    <button id="bookThisRoomBtn">Book this room</button>
                 </div>
             </article>
         </div>
     </section>
-    <div class="buttons">
-        <button class="btn1" onclick="loadChallengesPage()">On-site challenge</button>
-        <button class="btn2" onclick="loadChallengesPage()">Online challenges</button>
-    </div>
-    <section class="story">
-        <h3>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque vos
-            omnino desit illud quo solo felicitatis libertatisque perficiuntur.</h3>
-        <button>Read the full story</button>
-    </section>
-    <section class="promos">
-        <div>
-            <img src="img/4e0608e6f17528e2bdfd157eadc01a5414c38c73.jpg">
-        </div>
-        <div>
-            <h3>Play with your friends or build your team stronger at work</h3>
-            <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam. Nemo nocere tibi erit, et
-                non inimicos, et</p>
-            <button>Book on-site today</button>
-        </div>
-        <div>
-            <img src="img/fcc33c416d8b163eeb302f0c791fbdb1128ed0ee.jpg">
-        </div>
-        <div>
-            <h3>Play online or visit our venue for one of our 25 escape rooms</h3>
-            <p>Praeterea, ex culpa non invenies unum aut non accusatis unum. Et nihil inuitam. Nemo nocere tibi erit, et
-                non inimicos, et</p>
-            <button>See all challenges</button>
-        </div>
-    </section>
+   
     <footer>
         <div class="footerLeft">
             <h4>[Esc] Hacker Escape Rooms</h4>

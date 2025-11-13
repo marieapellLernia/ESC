@@ -1,10 +1,11 @@
 <div class="filter-interface">
     <div class="filter-column">
-        <h2>Filter challenges</h2> 
-        <button id="closeFilter" class="close-btn">Close Filters </button>
-        
-        <h3>By type</h3>
+        <div class="filter-heading-closeicon">
+            <span id="closeFilter" class="close-btn">&times;</span>
+            <h2>Filter challenges</h2> 
+        </div>
         <div class="checkbox-group">
+            <h4>By type</h4>
             <label class="checkbox-label">
                 <input type="checkbox" class="filter-checkbox" data-type="online">
                 <span class="checkmark"></span>
@@ -16,21 +17,18 @@
                 Include on-site challenges
             </label>
         </div>
-    
-        <h3>By rating</h3>
-        <div class="star-container">
+        
+        <div class="star-container1">
+            <h4>By rating</h4>
             <span class="star">★</span>
             <span class="star">★</span>
             <span class="star">★</span>
             <span class="star">★</span>
             <span class="star">★</span>
         </div>
-        <div class="rating-text">
-            ★ ★ ★ ★ ★ to ★ ★ ★ ★
-        </div>
-    
-        <h3>By tags</h3>
+        
         <div class="tags-container">
+            <h4>By tags</h4>
             <button class="filterTags" data-tag="web">Web</button>
             <button class="filterTags" data-tag="linux">Linux</button>
             <button class="filterTags" data-tag="cryptography">Cryptography</button>
@@ -38,10 +36,11 @@
             <button class="filterTags" data-tag="other">Some other tag</button>
             <button class="filterTags" data-tag="final">A final tag</button>
         </div>
-        
+   
         <div class="filter-section">
-            <h3>Search by keyword</h3>
+            <h4>Search by keyword</h4>
             <input type="text" class="search-input" placeholder="Start typing to filter">
         </div>
+        
     </div>
 </div>

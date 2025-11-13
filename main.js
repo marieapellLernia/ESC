@@ -100,9 +100,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Close button functionality
         container.querySelector('#closeFilter').addEventListener('click', function() {
+            const closeBtns = container.querySelectorAll(".close-btn");
             filterContainer.innerHTML = '';
+            closeBtn.addEventListener('click', function(){
+                container.style.display = "none";});
             filterBtn.style.display = "block";
             showAllCards(); // Show all cards when closing filter
+            // Get all close buttons from the loaded modal content
+                
         });
         
         // Search input functionality - apply filters as user types
@@ -194,8 +199,56 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ----------------------- Book this room (Modal) ------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
     // Get all "Book this room" buttons - use class instead of ID since there are multiple
-    const bookButtons = document.querySelectorAll('.0bookThisRoom');
+    const bookButtons = document.querySelectorAll('.bookThisRoom');
     const modal = document.querySelector("#bookRoomModal");
+    
+    function nextPage(currentModalPage, nextModalPage) {
+         // Validate current modal before proceeding
+        if (currentModalPage === 'modal1') {
+            const date = document.querySelector('#date');
+            if (!date || !date.value) {
+                alert('Please select a date');
+                return;
+            }
+        }
+        
+        if (currentModalPage === 'modal2') {
+            const name = document.querySelector('#name');
+            const email = document.querySelector('#email');
+            const time = document.querySelector('#time');
+            const participants = document.querySelector('#participants');
+            
+            if (!name || !name.value) {
+                alert('Please enter your name');
+                return;
+            }
+            
+            if (!email || !email.value) {
+                alert('Please enter your email');
+                return;
+            }
+            
+            if (!time || !time.value) {
+                alert('Please select a time');
+                return;
+            }
+            
+            if (!participants || !participants.value) {
+                alert('Please enter number of participants');
+                return;
+            }
+        }
+        // Hide current modal and show next modal
+        const currentModalPageEl = document.getElementById(currentModalPage);
+        const nextModalPageEl = document.getElementById(nextModalPage);
+        
+        if (currentModalPageEl) currentModalPageEl.style.display = "none";
+        if (nextModalPageEl) nextModalPageEl.style.display = "block";
+        
+        if (nextModalPage === 'modal3') {
+            alert("Booking completed! Adding data to an object to be store in a DataBase");
+        }
+    }
     
     // Add click event to each "Book this room" button
     bookButtons.forEach(button => {
@@ -203,21 +256,25 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 // Load external HTML for modal
                 const response = await fetch('bookThisRoomModal.html');
+                if (!response.ok) {
+                    throw new Error('Page not found');
+                }
                 const html = await response.text();
                 modal.innerHTML = html;
                 
-                // Show the modal
                 modal.style.display = "block";
+                const modal1 = modal.querySelector('#modal1');
+                if (modal1) modal1.style.display = "block";
 
-                // Get the close button from the newly loaded modal content
-                const closeBtn = modal.querySelector(".close");
+                // Get all close buttons
+                const closeBtns = modal.querySelectorAll(".close");
                 
-                // Close modal when X is clicked
-                if (closeBtn) {
+                // Close modal 
+                closeBtns.forEach(closeBtn => {
                     closeBtn.addEventListener('click', function(){
                         modal.style.display = "none";
                     });
-                }
+                });
 
                 // Close modal when clicking outside
                 window.addEventListener('click', function(event){
@@ -226,20 +283,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
-                // Handle form submission
-                const bookingForm = modal.querySelector('#bookingForm');
-                if (bookingForm) {
-                    bookingForm.addEventListener('submit', function(e) {
+                // Handle next page
+                const nextButtons = modal.querySelectorAll('.next-btn');
+                nextButtons.forEach(nextBtn => {
+                    nextBtn.addEventListener('click', function() {
+                        const nextModalPageId = this.dataset.next;
+                        const currentModalPage = this.closest('.modal').id;
+                        nextPage(currentModalPage, nextModalPageId);
+                    });
+                });
+
+                // Handle form submissions
+                const bookingForm1 = modal.querySelector('#bookingForm');
+                if (bookingForm1) {
+                    bookingForm1.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        // Handle form submission here
-                        alert('Booking submitted!');
+                        // Don't submit yet
+                    });
+                }
+
+                const bookingForm2 = modal.querySelector('#bookingForm2');
+                if (bookingForm2) {
+                    bookingForm2.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        // Handle final form submission here
+                        alert('Booking submitted! Add the date to the Database');
                         modal.style.display = "none";
                     });
                 }
                 
             } catch (error) {
                 console.error('Error loading Modal:', error);
-                modal.innerHTML = '<p>Error loading booking form</p>';
+                modal.innerHTML = '<p>Error loading booking form. Please try again.</p>';
+                modal.style.display = "block";
             }
         });
     });
