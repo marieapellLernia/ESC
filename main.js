@@ -197,74 +197,128 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ----------------------- Book this room (Modal) ------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all "Book this room" buttons - use class instead of ID since there are multiple
-    const bookButtons = document.querySelectorAll('.bookThisRoom');
-    const modal = document.querySelector("#bookRoomModal");
-    
-    function nextPage(currentModalPage, nextModalPage) {
-         // Validate current modal before proceeding
-        if (currentModalPage === 'modal1') {
-            const date = document.querySelector('#date');
-            if (!date || !date.value) {
-                alert('Please select a date');
-                return;
-            }
-        }
-        
-        if (currentModalPage === 'modal2') {
-            const name = document.querySelector('#name');
-            const email = document.querySelector('#email');
-            const time = document.querySelector('#time');
-            const participants = document.querySelector('#participants');
-            
-            if (!name || !name.value) {
-                alert('Please enter your name');
-                return;
-            }
-            
-            if (!email || !email.value) {
-                alert('Please enter your email');
-                return;
-            }
-            
-            if (!time || !time.value) {
-                alert('Please select a time');
-                return;
-            }
-            
-            if (!participants || !participants.value) {
-                alert('Please enter number of participants');
-                return;
-            }
-        }
-        // Hide current modal and show next modal
-        const currentModalPageEl = document.getElementById(currentModalPage);
-        const nextModalPageEl = document.getElementById(nextModalPage);
-        
-        if (currentModalPageEl) currentModalPageEl.style.display = "none";
-        if (nextModalPageEl) nextModalPageEl.style.display = "block";
-        
-        if (nextModalPage === 'modal3') {
-            alert("Booking completed! Adding data to an object to be store in a DataBase");
+let bookingData = {};
+async function sendPostRequest(){
+    try {
+        const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                challenge: parseInt(bookingData.challengeId),
+                name: bookingData.fullName,
+                email: bookingData.email,
+                date: bookingData.date,
+                time: bookingData.time,
+                participants: parseInt(bookingData.participants)
+            }),
+        });
+        const data = await res.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Booking failed:', error);
+    }
+}
+
+function nextPage(currentModalPage, nextModalPage) {
+    // Validate current modal before proceeding
+    const date = document.querySelector('#date');
+    if (currentModalPage === 'modal1') {
+        if (!date || !date.value) {
+            alert('Please select a date');
+            return;
         }
     }
+    bookingData.date = date.value;
     
-    // Add click event to each "Book this room" button
-    bookButtons.forEach(button => {
-        button.addEventListener("click", async function() {
+    const name = document.querySelector('#name');
+    const email = document.querySelector('#email');
+    const time = document.querySelector('#time');
+    const participants = document.querySelector('#participants');
+    if (currentModalPage === 'modal2') {
+        if (!name || !name.value) {
+            alert('Please enter your name');
+            return;
+        }
+        
+        if (!email || !email.value) {
+            alert('Please enter your email');
+            return;
+        }
+        
+        if (!time || !time.value) {
+            alert('Please select a time');
+            return;
+        }   
+        
+        if (!participants || !participants.value) {
+            alert('Please enter number of participants');
+            return;
+        }
+    }
+
+    // Adding data input from user to the object
+    bookingData.fullName = name.value;
+    bookingData.email = email.value;
+    bookingData.time = time.value;
+    bookingData.participants = participants.value;
+
+    // Hide current modal and show next modal
+    const currentModalPageEl = document.getElementById(currentModalPage);
+    const nextModalPageEl = document.getElementById(nextModalPage);
+    
+    if (currentModalPageEl) currentModalPageEl.style.display = "none";
+    if (nextModalPageEl) nextModalPageEl.style.display = "block";
+    
+    // handles the POST request. 
+    if (nextModalPage === 'modal3') {
+        sendPostRequest();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Create modal container if it doesn't exist
+    let modal = document.querySelector("#bookRoomModal");
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'bookRoomModal';
+        modal.className = 'modal';
+        document.body.appendChild(modal);
+    }
+    
+    // Event delegation on the container that holds the cards
+    document.addEventListener('click', async function(event) {
+        const bookButton = event.target.closest('.bookThisRoom');
+        
+        if (bookButton) {
+            event.preventDefault();
+       
             try {
+                bookingData.challengeId = bookButton.dataset.id;
+                
                 // Load external HTML for modal
                 const response = await fetch('bookThisRoomModal.html');
                 if (!response.ok) {
                     throw new Error('Page not found');
                 }
                 const html = await response.text();
-                modal.innerHTML = html;
                 
+                if (!modal) {
+                    console.error('Modal container not found');
+                    return;
+                }
+                
+                modal.innerHTML = html;
                 modal.style.display = "block";
-                const modal1 = modal.querySelector('#modal1');
-                if (modal1) modal1.style.display = "block";
+                
+                const modal1 = document.getElementById('modal1');
+                if (modal1) {
+                    modal1.style.display = "block";
+                } else {
+                    console.error('Modal1 not found in loaded HTML');
+                    return;
+                }
 
                 // Get all close buttons
                 const closeBtns = modal.querySelectorAll(".close");
@@ -294,29 +348,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Handle form submissions
-                const bookingForm1 = modal.querySelector('#bookingForm');
+                const bookingForm1 = document.getElementById('bookingForm');
                 if (bookingForm1) {
                     bookingForm1.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        // Don't submit yet
                     });
                 }
 
-                const bookingForm2 = modal.querySelector('#bookingForm2');
+                const bookingForm2 = document.getElementById('bookingForm2');
                 if (bookingForm2) {
                     bookingForm2.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        // Handle final form submission here
-                        alert('Booking submitted! Add the date to the Database');
                         modal.style.display = "none";
                     });
                 }
                 
             } catch (error) {
                 console.error('Error loading Modal:', error);
-                modal.innerHTML = '<p>Error loading booking form. Please try again.</p>';
-                modal.style.display = "block";
+                if (modal) {
+                    modal.innerHTML = '<p>Error loading booking form. Please try again.</p>';
+                    modal.style.display = "block";
+                }
             }
-        });
+        }
     });
 });
