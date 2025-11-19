@@ -274,6 +274,10 @@ function nextPage(currentModalPage, nextModalPage) {
     // handles the POST request. 
     if (nextModalPage === 'modal3') {
         sendPostRequest();
+        const backLink = document.querySelector(".back-link");
+        backLink.addEventListener('click', function(){
+            window.location.href = 'OurChallenges.html';
+        });
     }
 }
 
