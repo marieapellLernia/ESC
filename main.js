@@ -258,6 +258,8 @@ function nextPage(currentModalPage, nextModalPage) {
         }
     }
 
+    //Add the time section from API
+    
     // Adding data input from user to the object
     bookingData.fullName = name.value;
     bookingData.email = email.value;
@@ -278,6 +280,7 @@ function nextPage(currentModalPage, nextModalPage) {
         backLink.addEventListener('click', function(){
             window.location.href = 'OurChallenges.html';
         });
+        Object.keys(bookingData).forEach(key => {console.log(key, bookingData[key]);});
     }
 }
 
