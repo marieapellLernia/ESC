@@ -198,6 +198,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* ----------------------- Book this room (Modal) ------------------------- */
 let bookingData = {};
+async function fetchDateSlots(date, slots, challenge){
+    try {
+            // Fetch data from API 
+            const response = await fetch(`https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${date}&challenge=${challenge}`);
+            
+            if (!response.ok) {
+                throw new Error('Response not OK!');
+            }
+            
+            const data = await response.json();
+            
+            // Clear loading message
+            slots.innerHTML = '';
+            
+            // Adding each Slot as an option in the html
+            data.slots.forEach(slot => {
+                const option = document.createElement('option');
+                option.value = slot;
+                option.textContent = slot;
+                slots.appendChild(option);
+            });
+            
+            
+        } catch (error) {
+            // Error message
+            slots.innerHTML = '';
+            const errorOption = document.createElement('option');
+            errorOption.value = '';
+            errorOption.textContent = 'Error loading time slots';
+            errorOption.className = 'error';
+            slots.appendChild(errorOption);
+            console.error('Error fetching time slots:', error);
+        }
+}
+
 async function sendPostRequest(){
     try {
         const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/reservations', {
@@ -221,7 +256,7 @@ async function sendPostRequest(){
     }
 }
 
-function nextPage(currentModalPage, nextModalPage) {
+function nextPage(currentModalPage, nextModalPage, challengeId) {
     // Validate current modal before proceeding
     const date = document.querySelector('#date');
     if (currentModalPage === 'modal1') {
@@ -231,12 +266,16 @@ function nextPage(currentModalPage, nextModalPage) {
         }
     }
     bookingData.date = date.value;
+    //Add the time slots section from API
+    const timeSelect = document.querySelector("#time");
+
+    if(timeSelect){fetchDateSlots(bookingData.date, timeSelect, challengeId)};
     
-    const name = document.querySelector('#name');
-    const email = document.querySelector('#email');
-    const time = document.querySelector('#time');
-    const participants = document.querySelector('#participants');
     if (currentModalPage === 'modal2') {
+        const name = document.querySelector('#name');
+        const email = document.querySelector('#email');
+        const time = document.querySelector('#time');
+        const participants = document.querySelector('#participants');
         if (!name || !name.value) {
             alert('Please enter your name');
             return;
@@ -256,16 +295,14 @@ function nextPage(currentModalPage, nextModalPage) {
             alert('Please enter number of participants');
             return;
         }
+
+        // Adding data input from user to the object
+        bookingData.fullName = name.value;
+        bookingData.email = email.value;
+        bookingData.time = time.value;
+        bookingData.participants = participants.value;
     }
-
-    //Add the time section from API
     
-    // Adding data input from user to the object
-    bookingData.fullName = name.value;
-    bookingData.email = email.value;
-    bookingData.time = time.value;
-    bookingData.participants = participants.value;
-
     // Hide current modal and show next modal
     const currentModalPageEl = document.getElementById(currentModalPage);
     const nextModalPageEl = document.getElementById(nextModalPage);
@@ -337,20 +374,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 });
 
-                // Close modal when clicking outside
-                window.addEventListener('click', function(event){
-                    if(event.target == modal){
-                        modal.style.display = "none";
-                    }
-                });
-
                 // Handle next page
                 const nextButtons = modal.querySelectorAll('.next-btn');
                 nextButtons.forEach(nextBtn => {
                     nextBtn.addEventListener('click', function() {
                         const nextModalPageId = this.dataset.next;
                         const currentModalPage = this.closest('.modal').id;
-                        nextPage(currentModalPage, nextModalPageId);
+                        nextPage(currentModalPage, nextModalPageId, bookingData.challengeId);
                     });
                 });
 
