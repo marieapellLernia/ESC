@@ -12,6 +12,7 @@
 }
 
 .card {
+    position: relative;
     flex: 0 0 350px;
     scroll-snap-align: center;
     background: white;
@@ -21,7 +22,7 @@
     transition: transform 0.2s ease;
 
 
-    .card:hover {
+    &:hover {
         transform: translateY(-5px);
     }
 
@@ -30,6 +31,15 @@
         height: 180px;
         object-fit: cover;
     }
+}
+
+.cardTypeIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 40px;
+  color: #0f181d;
+  z-index: 2;
 }
 
 .cardContent {

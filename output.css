@@ -227,6 +227,7 @@ header h1 {
   align-items: center;
   justify-content: center;
   margin: 0;
+  cursor: pointer;
 }
 .buttons .btn2 {
   background-color: transparent;
@@ -243,228 +244,207 @@ header h1 {
   align-items: center;
   justify-content: center;
   margin: 0;
-}
-
-/* Filter Container */
-.challengesFilter h1{
-  text-align: center;
-}
-
-.filter-section {
-  margin-bottom: 15px;
-}
-
-#filterContainer {
-  gap: 15px;
-  margin-top: 20px;
-  padding: 0;
-  
-}
-.filterBtn {
-  display: block;
-  margin: 0 auto;
   cursor: pointer;
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 18px;
-  width: 180px;
-  height: 50px;
-  border: 1px solid rgb(184, 182, 182);
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  color: #000;
 }
 
-.filterBtn:hover {
-   background-color: rgb(172, 170, 170);
-   color:#fff;
+@media (min-width: 768px) {
+  .top img {
+    height: 500px;
+  }
+  .buttons {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: -33px;
+    justify-content: center;
+  }
+  .buttons .btn1 {
+    order: 2;
+  }
+  .buttons .btn2 {
+    order: 1;
+  }
+  .buttons .btn2 {
+    background-color: #E3170A;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
+    width: 308px;
+    height: 66px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
-
-.filter-interface {
-  display: block;
-  width:58%;
-  margin: 0 auto;
-  border: 1px solid rgb(184, 182, 182);
-  border-radius: 5px;
-  padding: 20px;
-}
-
-.filter-column {
-  display: grid;
-  grid-template-columns: repeat(3, [col-start] 33%);
-  justify-content: space-between;
-  margin: 0 auto;
-}
-
-.filter-heading-closeicon{
-  grid-column: col-start 1/ span 3;
-  grid-row: 1 / 1;
-}
-.filter-section{
-  grid-column: col-start 2/ span 2;
-  grid-row: 3 / 3;
-}
-
-.filter-section h3 {
-  margin: 0 0 15px 0;
-  font-size: 16px;
-  color: #333;
-  font-weight: 600;
-}
-
-/* Checkbox Styles */
-
-
-.checkbox-label {
+.reviews {
   display: flex;
   align-items: center;
-  cursor: pointer;
-  font-size: 14px;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 10px;
-  color: #333;
-  transition: color 0.2s;
-  padding-bottom: 2px;
+  justify-content: center;
+  margin: auto;
+  max-width: 500px;
+  margin-top: 20px;
 }
-
-.checkbox-label:hover {
-  color: #007bff;
+.reviews .review {
+  display: flex;
+  align-items: flex-start;
 }
-
-.filter-checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+.reviews img {
+  height: 73px;
+  border-radius: 50px;
+  margin: 30px 20px;
+  align-items: center;
 }
-
-.checkmark {
-  position: absolute;
-  left: 0;
-  height: 14px;
-  width: 14px;
-  background-color: #fff;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  gap:2px;
+.reviews .quote {
+  margin: 20px 0 0 0;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
 }
-
-.checkbox-label:hover .filter-checkbox ~ .checkmark {
-  border-color: #007bff;
-  background-color: #f8f9fa;
+.reviews .author {
+  margin: 10px 0 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
 }
-
-.filter-checkbox:checked ~ .checkmark {
-  background-color: #304f70;
-  border-color: #007bff;
+.reviews .quote-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
-
-.checkmark:after {
-  content: "";
-  position: absolute;
+.reviews .reviewDesktop {
   display: none;
 }
-
-.filter-checkbox:checked ~ .checkmark:after {
-  display: block;
+@media (min-width: 1200px) {
+  .reviews {
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px 150px 0;
+    max-width: fit-content;
+  }
+  .reviews .reviewDesktop {
+    display: flex;
+  }
 }
 
-.checkbox-label .checkmark:after {
-  left: 3px;
-  top: 0;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.panel h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 60px;
 }
 
-/* Tag Button Styles */
-.filterTags {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 4px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+.card {
+  position: relative;
+  flex: 0 0 350px;
+  scroll-snap-align: center;
   background: white;
-  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cardTypeIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 40px;
+  color: #0f181d;
+  z-index: 2;
+}
+
+.cardContent {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cardContent h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+}
+.cardContent p {
   font-size: 14px;
-  transition: all 0.2s;
-  color: #333;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 15px;
+  line-height: 1.4;
 }
-
-.filterTags:hover {
-  background: #f0f0f0;
-  border-color: #8ACFE5;
-}
-
-.filterTags.active {
-  background: #8ACFE5;
+.cardContent button {
+  background-color: #E3170A;
   color: white;
-  border-color: #8ACFE5;
-}
-
-/* Star Rating Styles */
-.star {
-  cursor: pointer;
-  font-size: 24px;
-  color: #ddd;
-  margin-right: 5px;
-  transition: color 0.2s;
-}
-
-.star:hover {
-  color: #ffd700;
-}
-
-.star.selected {
-  color: #ffd700;
-}
-
-.rating-text {
-  font-size: 12px;
-  color: #666;
-  margin-top: 8px;
-}
-
-/* Search Input Styles */
-.search-input {
-  width: 40%;
-  padding: 12px;
-  border: 1px solid #ddd;
+  border: none;
+  padding: 10px 15px;
   border-radius: 5px;
-  font-size: 14px;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color:#8ACFE5;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-/* Button Styles */
-.close-btn {
-  font-size: 44px;
+  cursor: pointer;
   font-weight: bold;
-  cursor: pointer;
-  color: #aaa;
-  z-index: 10;
-  float:right;
-  margin-right: 10px;
-  cursor: pointer;
-
+  align-self: flex-end;
+  width: auto;
+}
+.cardContent button:hover {
+  background-color: #c92032;
 }
 
-.close-btn:hover {
-  color: #8ACFE5;
+.rating {
+  display: flex;
+  align-items: center;
+}
+.rating .fa-star {
+  font-size: 15px;
+  color: transparent;
+  margin-right: 4px;
+}
+.rating .fa-star.fa-regular {
+  color: #E3170A;
+}
+.rating .fa-star.fa-regular:hover {
+  font-family: "Font Awesome 6 Free";
+}
+.rating .fa-star.fa-solid {
+  color: #E3170A;
 }
 
+.participants {
+  color: #777;
+  margin-left: 8px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(20px, 5vw, 80px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 20%;
+  padding-right: 10%;
+  justify-content: flex-start;
+}
+
+/* Note: This Section is temperory and will be changed later with the SCSS styling done by Markus for the Model part*/
 /*Book this room Modal*/
 .modal {
   display: none; 
@@ -548,6 +528,20 @@ header h1 {
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+.form-group select {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
 .modal button {
     background-color:  #0056b3;
     color: white;
@@ -578,195 +572,8 @@ header h1 {
 .submit-btn:hover {
     background-color: #2982e0;
 }
+/* ---------------------- Modal temperory CSS ends here ------------------------------ */
 
-
-@media (min-width: 768px) {
-  .top img {
-    height: 500px;
-  }
-  .buttons {
-    flex-direction: row;
-    gap: 10px;
-    margin-top: -33px;
-    justify-content: center;
-  }
-  .buttons .btn1 {
-    order: 2;
-  }
-  .buttons .btn2 {
-    order: 1;
-  }
-  .buttons .btn2 {
-    background-color: #E3170A;
-    font-family: "Roboto";
-    font-weight: bold;
-    font-size: 20px;
-    width: 308px;
-    height: 66px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-.reviews {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  max-width: 500px;
-  margin-top: 20px;
-}
-.reviews .review {
-  display: flex;
-  align-items: flex-start;
-}
-.reviews img {
-  height: 73px;
-  border-radius: 50px;
-  margin: 30px 20px;
-  align-items: center;
-}
-.reviews .quote {
-  margin: 20px 0 0 0;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 24px;
-  color: #000;
-}
-.reviews .author {
-  margin: 10px 0 0 0;
-  font-size: 18px;
-  font-weight: 400;
-  font-style: normal;
-}
-.reviews .quote-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-.reviews .reviewDesktop {
-  display: none;
-}
-
-@media (min-width: 1200px) {
-  .reviews {
-    flex-direction: row;
-    justify-content: center;
-    margin: 50px 150px 0;
-    max-width: fit-content;
-  }
-  .reviews .reviewDesktop {
-    display: flex;
-  }
-}
-
-.panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-}
-.panel h1 {
-  font-size: 32px;
-  font-weight: 400;
-  margin-top: 60px;
-}
-
-.card {
-  flex: 0 0 350px;
-  scroll-snap-align: center;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-}
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.cardContent {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.cardContent h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: black;
-}
-.cardContent p {
-  font-size: 14px;
-  font-weight: 400;
-  color: black;
-  margin-bottom: 15px;
-  line-height: 1.4;
-}
-.cardContent button {
-  background-color: #E3170A;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  align-self: flex-end;
-  width: auto;
-  transition: background-color 0.2s;
-}
-.cardContent button:hover {
-  background-color: #c92032;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
-.rating .fa-star {
-  font-size: 15px;
-  color: transparent;
-  margin-right: 4px;
-}
-.rating .fa-star.fa-regular {
-  color: #E3170A;
-}
-.rating .fa-star.fa-solid {
-  color: #E3170A;
-}
-
-.participants {
-  color: #777;
-  margin-left: 8px;
-  font-size: 14px;
-}
-
-.cardContainer {
-  display: flex;
-  flex-direction: row;
-  gap: clamp(20px, 5vw, 80px);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 10px 20px;
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: 20%;
-  padding-right: 10%;
-  justify-content: flex-start;
-}
 @media (min-width: 999px) {
   .panel h1 {
     font-size: 36px;
@@ -812,10 +619,6 @@ header h1 {
   font-weight: bold;
   font-family: "Roboto";
   font-size: 25px;
-  transition: all 0.2s;
-}
-.story button:hover {
-  background-color: rgba(138, 207, 229, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -856,10 +659,6 @@ header h1 {
   width: auto;
   font-size: 24px;
   margin: 20px 20px 50px;
-  transition: background-color 0.2s;
-}
-.promos button:hover {
-  background-color: #c92032;
 }
 
 @media (min-width: 768px) and (max-width: 999px) {
@@ -932,10 +731,6 @@ footer a {
   text-decoration: none;
   font-size: 18px;
   font-weight: 400;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: #8ACFE5;
 }
 footer ul {
   list-style-type: none;
@@ -1023,29 +818,4 @@ body {
   font-weight: bold;
   margin: 0;
   padding: 0;
-}
-
-/* Responsive filter interface */
-@media (max-width: 768px) {
-  .modal-content{
-    padding: 10px;
-  }
-  
-  .filter-interface {
-    flex-direction: column;
-    gap: 10px;
-    padding: 25px;
-    margin: 0 auto; 
-    width: 90%;
-  }
-  
-  .filter-column {
-    width: 100%;
-  }
-  
-  .search-input {
-    width: 100%;
-  }
-
-
 }
