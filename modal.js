@@ -106,5 +106,84 @@ function nextPage(currentModalPage, nextModalPage, challengeId) {
     }
 }
 
+//Handle modal pages
+async function bookingRoomReservation(event, modal) {
+        const bookButton = event.target.closest('.BookThisRoom');
+        
+        if (bookButton) {
+            event.preventDefault();
+       
+            try {
+                bookingData.challengeId = bookButton.dataset.id;
+                
+                // Load external HTML for modal
+                const response = await fetch('bookThisRoomModal.html');
+                if (!response.ok) {
+                    throw new Error('Page not found');
+                }
+                const html = await response.text();
+                
+                if (!modal) {
+                    console.error('Modal container not found');
+                    return;
+                }
+                
+                modal.innerHTML = html;
+                modal.style.display = "block";
+                
+                const modal1 = document.getElementById('modal1');
+                if (modal1) {
+                    modal1.style.display = "block";
+                } else {
+                    console.error('Modal1 not found in loaded HTML');
+                    return;
+                }
+
+                // Get all close buttons
+                const closeBtns = modal.querySelectorAll(".close");
+                
+                // Close modal 
+                closeBtns.forEach(closeBtn => {
+                    closeBtn.addEventListener('click', function(){
+                        modal.style.display = "none";
+                    });
+                });
+
+                // Handle next page
+                const nextButtons = modal.querySelectorAll('.next-btn');
+                nextButtons.forEach(nextBtn => {
+                    nextBtn.addEventListener('click', function() {
+                        const nextModalPageId = this.dataset.next;
+                        const currentModalPage = this.closest('.modal').id;
+                        nextPage(currentModalPage, nextModalPageId, bookingData.challengeId);
+                    });
+                });
+
+                // Handle form submissions
+                const bookingForm1 = document.getElementById('bookingForm');
+                if (bookingForm1) {
+                    bookingForm1.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                    });
+                }
+
+                const bookingForm2 = document.getElementById('bookingForm2');
+                if (bookingForm2) {
+                    bookingForm2.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        modal.style.display = "none";
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Error loading Modal:', error);
+                if (modal) {
+                    modal.innerHTML = '<p>Error loading booking form. Please try again.</p>';
+                    modal.style.display = "block";
+                }
+            }
+        }
+    }
+
 //Export the object and the functions for further use
-export {bookingData, renderSlotsToHTML, nextPage};
+export {bookingData, renderSlotsToHTML, nextPage, bookingRoomReservation};
