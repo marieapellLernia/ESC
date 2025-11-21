@@ -1,9 +1,11 @@
 import { getAvailableTimes } from "./api.js";
 import { postBooking } from "./api.js";
+import { fetchChallenges } from "./api.js";
 
 //Data is stored in this object for further use
 const bookingData = {
     challengeId: null,
+    challengeTitle: null,
     date: null,
     fullName: null,
     email: null,
@@ -41,9 +43,10 @@ async function renderSlotsToHTML(date, slots, challengeID){
 }
 
 //Function takes care of the modal and form submission
-function nextPage(currentModalPage, nextModalPage, challengeId) {
+async function nextPage(currentModalPage, nextModalPage, challengeId) {
     // Validate current modal before proceeding
     const date = document.querySelector('#date');
+   
     if (currentModalPage === 'modal1') {
         if (!date || !date.value) {
             alert('Please select a date');
@@ -112,7 +115,7 @@ async function bookingRoomReservation(event, modal) {
         
         if (bookButton) {
             event.preventDefault();
-       
+            
             try {
                 bookingData.challengeId = bookButton.dataset.id;
                 
@@ -126,17 +129,49 @@ async function bookingRoomReservation(event, modal) {
                 if (!modal) {
                     console.error('Modal container not found');
                     return;
-                }
-                
+                }    
                 modal.innerHTML = html;
                 modal.style.display = "block";
+               const modal1 = document.getElementById('modal1');
+            if (modal1) {
+                modal1.style.display = "block";
                 
-                const modal1 = document.getElementById('modal1');
-                if (modal1) {
-                    modal1.style.display = "block";
-                } else {
-                    console.error('Modal1 not found in loaded HTML');
-                    return;
+                // Set room title in ALL modals
+                const roomTitles = modal.querySelectorAll('.bookedRoom-title');
+                if (roomTitles.length > 0) {
+                    try {
+                        const fetchTitle = await fetchChallenges();
+                        const challengeTitle = fetchTitle.find(challenge => 
+                            challenge.id === parseInt(bookingData.challengeId)
+                        );
+                        
+                        roomTitles.forEach(titleElement => {
+                            const modalElement = titleElement.closest('.modal');
+                            if (modalElement && modalElement.id == 'modal1') {
+                                if(challengeTitle.type == "onsite"){
+                                    titleElement.innerHTML = `Book this room "${challengeTitle.title}" (step 1)`;
+                                } else {
+                                    titleElement.innerHTML = `Take challenge online "${challengeTitle.title}" (step 1)`;
+                                }
+                            } else if (modalElement && modalElement.id == 'modal2') {
+                                if(challengeTitle.type == "onsite"){
+                                    titleElement.innerHTML = `Book this room "${challengeTitle.title}" (step 2)`;
+                                } else {
+                                    titleElement.innerHTML = `Take challenge online "${challengeTitle.title}" (step 2)`;
+                                }
+                            }
+                        });
+                        
+                        bookingData.challengeTitle = challengeTitle;
+                    } catch (error) {
+                        console.error('Error fetching challenge title:', error);
+                        
+                    }
+                }
+                    
+                }else {
+                console.error('Modal1 not found in loaded HTML');
+                return;
                 }
 
                 // Get all close buttons
