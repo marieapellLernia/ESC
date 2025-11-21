@@ -149,13 +149,13 @@ async function bookingRoomReservation(event, modal) {
                             const modalElement = titleElement.closest('.modal');
                             if (modalElement && modalElement.id == 'modal1') {
                                 if(challengeTitle.type == "onsite"){
-                                    titleElement.innerHTML = `Book this room "${challengeTitle.title}" (step 1)`;
+                                    titleElement.innerHTML = `Book room "${challengeTitle.title}" (step 1)`;
                                 } else {
                                     titleElement.innerHTML = `Take challenge online "${challengeTitle.title}" (step 1)`;
                                 }
                             } else if (modalElement && modalElement.id == 'modal2') {
                                 if(challengeTitle.type == "onsite"){
-                                    titleElement.innerHTML = `Book this room "${challengeTitle.title}" (step 2)`;
+                                    titleElement.innerHTML = `Book room "${challengeTitle.title}" (step 2)`;
                                 } else {
                                     titleElement.innerHTML = `Take challenge online "${challengeTitle.title}" (step 2)`;
                                 }
