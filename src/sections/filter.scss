@@ -35,6 +35,10 @@
     display: none;
 }
 
+.close-btn {
+    display: none;
+}
+
 
 .filter-interface.active {
     display: grid;
@@ -100,7 +104,7 @@
 
 
 
-.close-btn {
+.close-btn.active {
     position: absolute;
     top: 20px;
     right: 20px;
