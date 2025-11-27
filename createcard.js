@@ -96,18 +96,6 @@ export function renderList(container, list) {
   });
 }
 
-//------------Add click listeners to the card buttons------------//
-function addBookbuttonListeners() {
-    // Get all "Book this room" buttons - use class instead of ID since there are multiple
-    const bookButtons = document.querySelectorAll('.BookThisRoom');
-
-    // Add click event to each "Book this room" button
-    bookButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            toggleModal(button.dataset.id);
-        });
-    });
-}
 
 //-------------------Init when DOM is built-------------------//
 document.addEventListener('DOMContentLoaded', async () => {
@@ -135,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       renderList(allCh, challenges);
     }
 
-    addBookbuttonListeners();
+    
 
   } catch (err) {
     console.error(err);
