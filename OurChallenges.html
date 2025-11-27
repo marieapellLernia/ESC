@@ -50,75 +50,70 @@
         <button class="filterBtn">Filter challenges</button>
          <div class="filter-interface">
 
-    <h2 class="filter-title">Filter challenges</h2>
+            <h2 class="filter-title">Filter challenges</h2>
 
-    <button id="closeFilter" class="close-btn">X</button>
+            <button id="closeFilter" class="close-btn">X</button>
 
-    <div class="filter-section type">
-        <h3>By type</h3>
-        <div class="checkbox-group">
-            <label class="checkbox-label">
-                <input type="checkbox" class="checkbox-online" data-type="online">
-                <span class="checkmark"></span>
-                Include online challenges
-            </label>
+            <div class="filter-section type">
+                <h3>By type</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox-online" data-type="online">
+                        <span class="checkmark"></span>
+                        Include online challenges
+                    </label>
 
-            <label class="checkbox-label">
-                <input type="checkbox" class="checkbox-onsite" data-type="onsite">
-                <span class="checkmark"></span>
-                Include on-site challenges
-            </label>
-        </div>
-    </div>
-
-    <div class="filter-section rating">
-            <h3>By rating</h3>
-            <div class="star-container">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-            </div>
-            <div class="rating-text">to</div>
-            <div class="star-container">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox-onsite" data-type="onsite">
+                        <span class="checkmark"></span>
+                        Include on-site challenges
+                    </label>
+                </div>
             </div>
 
-        </div>
+            <div class="filter-section rating">
+                    <h3>By rating</h3>
+                    <div class="star-container">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="rating-text">to</div>
+                    <div class="star-container">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
 
-        <div class="filter-section tags">
-            <h3>By tags</h3>
-            <div class="tags-container">
-                <button class="filterTags" data-tag="bash">Bash</button>
-                <button class="filterTags" data-tag="javascript">JavaScript</button>
-                <button class="filterTags" data-tag="coding">Coding</button>
-                <button class="filterTags" data-tag="hacking">Hacking</button>
-                <button class="filterTags" data-tag="phreaking">Phreaking</button>
-                <button class="filterTags" data-tag="linux">Linux</button>
-                <button class="filterTags" data-tag="ctf">CTF</button>
-                <button class="filterTags" data-tag="web">Web</button>
-                <button class="filterTags" data-tag="ssh">SSH</button>
-                <button class="filterTags" data-tag="electronics">Electronics</button>
+                </div>
+
+                <div class="filter-section tags">
+                    <h3>By tags</h3>
+                    <div class="tags-container">
+                        <button class="filterTags" data-tag="bash">Bash</button>
+                        <button class="filterTags" data-tag="javascript">JavaScript</button>
+                        <button class="filterTags" data-tag="coding">Coding</button>
+                        <button class="filterTags" data-tag="hacking">Hacking</button>
+                        <button class="filterTags" data-tag="phreaking">Phreaking</button>
+                        <button class="filterTags" data-tag="linux">Linux</button>
+                        <button class="filterTags" data-tag="ctf">CTF</button>
+                        <button class="filterTags" data-tag="web">Web</button>
+                        <button class="filterTags" data-tag="ssh">SSH</button>
+                        <button class="filterTags" data-tag="electronics">Electronics</button>
+                    </div>
+                </div>
+
+            <div class="filter-section search">
+                <h3>Search by keyword</h3>
+                <input type="text" class="search-input" placeholder="Start typing to filter">
             </div>
+
         </div>
-
-    <div class="filter-section search">
-        <h3>Search by keyword</h3>
-        <input type="text" class="search-input" placeholder="Start typing to filter">
-    </div>
-
-</div>
-
-        
-<section class="panel">
-    <div class="cardContainer" id="allChallenges">
-        <div id="bookRoomModal" class="modal"></div>
-    </div>
+    </section>
 
     <section class="panel">
         <div class="cardContainer" id="allChallenges">
@@ -157,7 +152,6 @@
             </div>
         </div>
     </footer>
-
     <script type="module" src='main.js'></script>
     <script type="module" src='createcard.js'></script>
     <script type="module" src='filter.js'></script>
