@@ -34,51 +34,6 @@ buttonGroups.forEach(buttonGroup => {
 });
 
 /* ----------------------- Book this room (Modal) ------------------------- */
-/*export async function toggleModal(buttonID) {
-    try {
-        const modal = document.querySelector("#bookRoomModal");
-
-        // Load external HTML for modal
-        const response = await fetch('bookThisRoomModal.html');
-        const html = await response.text();
-        modal.innerHTML = html;
-
-        // Show the modal
-        modal.style.display = "block";
-
-        // Get the close button from the newly loaded modal content
-        const closeBtn = modal.querySelector(".close");
-
-        // Close modal when X is clicked
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function () {
-                modal.style.display = "none";
-            });
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        });
-
-        // Handle form submission
-        const bookingForm = modal.querySelector('#bookingForm');
-        if (bookingForm) {
-            bookingForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                // Handle form submission here
-                alert('Booking submitted!');
-                modal.style.display = "none";
-            });
-        }
-
-    } catch (error) {
-        console.error('Error loading Modal:', error);
-        modal.innerHTML = '<p>Error loading booking form</p>';
-    }
-}*/
 
 document.addEventListener('DOMContentLoaded', function() {
     // Create modal container if it doesn't exist
