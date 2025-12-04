@@ -9,7 +9,6 @@ const bookingData = {
     date: null,
     fullName: null,
     email: null,
-    tel: null,
     time: null,
     participants: null
 };
@@ -63,7 +62,6 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
     if (currentModalPage === 'modal2') {
         const name = document.querySelector('#name');
         const email = document.querySelector('#email');
-        const tel = document.querySelector('#tel');
         const time = document.querySelector('#time');
         const participants = document.querySelector('#participants');
         if (!name || !name.value) {
@@ -73,14 +71,6 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
         
         if (!email || !email.value) {
             alert('Please enter your email');
-            return;
-        }
-
-        const phoneRegex = /^\d{10}$/;
-
-        // If tel is a string/number that isn't 10 digits, show error
-        if (!phoneRegex.test(String(tel.value))) {
-            alert('Please enter a valid 10-digit telephone number');
             return;
         }
         
@@ -97,7 +87,6 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
         // Adding data input from user to the object
         bookingData.fullName = name.value;
         bookingData.email = email.value;
-        bookingData.tel = tel.value;
         bookingData.time = time.value;
         bookingData.participants = participants.value;
     }
