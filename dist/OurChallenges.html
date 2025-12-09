@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ESC Hacker Escape Rooms</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/assets/output-D5zU1jIc.css'>
+     <link rel="icon" type="image/x-icon" href="/assets/favicon-Cs3FLQGP.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="module" crossorigin src="/assets/ourchallenges-CummSCIr.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-jt0CM-N1.js">
+  <link rel="modulepreload" crossorigin href="/assets/createcard-DSBi7P7j.js">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="/assets/9096b17d9b644c0fb4a4ddeb82daf9e66c5240c5-JIcfkOXD.png"></a>
+            <h1>Hacker Escape Rooms</h1>
+        </div>
+
+        <div class="menuIcon" id="menuBtn">
+            <div class="hamburgerIcon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <nav class="mainNav" id="mainNav">
+            <div class="closeIcon" id="closeBtn">
+                <div class="closeBar"></div>
+                <div class="closeBar"></div>
+            </div>
+            <ul>
+                <li><a href="OurChallenges.html">Play online</a></li>
+                <li><a href="OurChallenges.html">Play on-site</a></li>
+                <li><a href="theStory.html">The story</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="overlay" id="overlay"></div>
+
+    <section class="challengesFilter">
+        <h1>Our challenges</h1>
+        <button class="filterBtn">Filter challenges</button>
+         <div class="filter-interface">
+
+    <h2 class="filter-title">Filter challenges</h2>
+
+    <button id="closeFilter" class="close-btn">X</button>
+<div class="global-mode">
+  <label>
+    <input type="radio" id="filterAnd" name="globalMode" checked>AND
+  </label>
+  <label>
+    <input type="radio" id="filterOr" name="globalMode">OR
+  </label>
+</div>
+    <div class="filter-section type">
+        <h3>By type</h3>
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-online" data-type="online">
+                <span class="checkmark"></span>
+                Include online challenges
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-onsite" data-type="onsite">
+                <span class="checkmark"></span>
+                Include on-site challenges
+            </label>
+        </div>
+    </div>
+
+    <div class="filter-section rating">
+            <h3>By rating</h3>
+            <div class="star-container">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="rating-text">to</div>
+            <div class="star-container">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+
+        </div>
+
+        <div class="filter-section tags">
+            <h3>By tags</h3>
+            <input type="radio" name="tags" id="and" value="and" checked>
+            <label name="and">AND</label>
+            <input type="radio" name="tags" id="or" value="or">
+            <label name="or">OR</label>
+            <div class="tags-container">
+                <button class="filterTags" data-tag="bash">Bash</button>
+                <button class="filterTags" data-tag="javascript">JavaScript</button>
+                <button class="filterTags" data-tag="coding">Coding</button>
+                <button class="filterTags" data-tag="hacking">Hacking</button>
+                <button class="filterTags" data-tag="phreaking">Phreaking</button>
+                <button class="filterTags" data-tag="linux">Linux</button>
+                <button class="filterTags" data-tag="ctf">CTF</button>
+                <button class="filterTags" data-tag="web">Web</button>
+                <button class="filterTags" data-tag="ssh">SSH</button>
+                <button class="filterTags" data-tag="electronics">Electronics</button>
+            </div>
+        </div>
+
+    <div class="filter-section search">
+        <h3>Search by keyword</h3>
+        <input type="text" class="search-input" placeholder="Start typing to filter">
+    </div>
+
+</div>
+    </section>
+
+    <section class="panel">
+        <div class="cardContainer" id="allChallenges">
+            <div id="bookRoomModal" class="modal"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footerLeft">
+            <h4>[Esc] Hacker Escape Rooms</h4>
+            <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque
+                vos
+                omnino desit illud quo solo felicitatis libertatisque perficiuntur.</p>
+        </div>
+        <div class="footerRight">
+            <nav>
+                <h4>Site map</h4>
+                <ul>
+                    <li><a href="theStory.html">The Story</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Legal</a></li>
+                    <br>
+                    <li><a href="#">Play online</a></li>
+                    <li><a href="#">Play on-site</a></li>
+
+                </ul>
+            </nav>
+
+            <div>
+                <h4>Follow us on</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
