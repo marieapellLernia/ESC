@@ -7,6 +7,9 @@
 @use "sections/footer";
 @use "sections/filter";
 @use 'sections/bookThisRoomModal';
+@use 'sections/theStory';
+
+@use 'sections/contact.scss';
 
 body {
     font-family: "Roboto";

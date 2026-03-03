@@ -35,10 +35,10 @@
                 <div class="closeBar"></div>
             </div>
             <ul>
-                <li><a href="#">Play online</a></li>
-                <li><a href="#">Play on-site</a></li>
-                <li><a href="#">The story</a></li>
-                <li><a href="#">Contact us</a></li>
+                <li><a href="OurChallenges.html">Play online</a></li>
+                <li><a href="OurChallenges.html">Play on-site</a></li>
+                <li><a href="theStory.html">The story</a></li>
+                <li><a href="contact.html">Contact us</a></li>
             </ul>
         </nav>
     </header>
@@ -52,16 +52,23 @@
 
             <h2 class="filter-title">Filter challenges</h2>
 
-            <button id="closeFilter" class="close-btn">X</button>
-
-            <div class="filter-section type">
-                <h3>By type</h3>
-                <div class="checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" class="checkbox-online" data-type="online">
-                        <span class="checkmark"></span>
-                        Include online challenges
-                    </label>
+    <button id="closeFilter" class="close-btn">X</button>
+<div class="global-mode">
+  <label>
+    <input type="radio" id="filterAnd" name="globalMode" checked>AND
+  </label>
+  <label>
+    <input type="radio" id="filterOr" name="globalMode">OR
+  </label>
+</div>
+    <div class="filter-section type">
+        <h3>By type</h3>
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-online" data-type="online">
+                <span class="checkmark"></span>
+                Include online challenges
+            </label>
 
                     <label class="checkbox-label">
                         <input type="checkbox" class="checkbox-onsite" data-type="onsite">
@@ -116,6 +123,10 @@
 
         <div class="filter-section tags">
             <h3>By tags</h3>
+            <input type="radio" name="tags" id="and" value="and" checked>
+            <label name="and">AND</label>
+            <input type="radio" name="tags" id="or" value="or">
+            <label name="or">OR</label>
             <div class="tags-container">
                 <button class="filterTags" data-tag="bash">Bash</button>
                 <button class="filterTags" data-tag="javascript">JavaScript</button>
@@ -155,8 +166,8 @@
             <nav>
                 <h4>Site map</h4>
                 <ul>
-                    <li><a href="#">The Story</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="theStory.html">The Story</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="#">Legal</a></li>
                     <br>
                     <li><a href="#">Play online</a></li>

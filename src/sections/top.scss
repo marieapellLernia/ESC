@@ -30,7 +30,10 @@
         justify-content: center;
         margin: 0;
         cursor: pointer;
-    }
+
+          &:hover {
+          background-color: #287691;
+    }}
 
     .btn2 {
         background-color: transparent;
@@ -48,8 +51,11 @@
         justify-content: center;
         margin: 0;
         cursor: pointer;
-    }
-}
+
+          &:hover {
+          background-color: #720f08;
+        }
+    }}
 
     .btn3 {
         background-color: #8ACFE5;
@@ -68,7 +74,11 @@
         justify-content: center;
         margin: 0;
         cursor: pointer;
-    }
+
+          &:hover {
+          background-color: #287691;
+        
+    }}
 
     .btn4 {
         background-color: transparent;
@@ -86,7 +96,10 @@
         justify-content: center;
         margin: 0;
         cursor: pointer;
-    }
+
+                            &:hover {
+          background-color: #1d4f6e;
+    }}
 .btn1::before,
 .btn2::before,
 .btn3::before,

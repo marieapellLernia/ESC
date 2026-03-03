@@ -12,26 +12,35 @@
 }
 
 .card {
-    position: relative;
-    flex: 0 0 350px;
-    scroll-snap-align: center;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease;
+  position: relative;
+  flex: 0 0 350px;
+  scroll-snap-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
 
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
 
     &:hover {
-        transform: translateY(-5px);
+      transform: scale(1.03) translateY(-5px);
     }
-
-    img {
+    }
+      img {
         width: 100%;
         height: 180px;
         object-fit: cover;
     }
 }
+
+
 
 .cardTypeIcon {
   position: absolute;
@@ -78,7 +87,7 @@
 
 
     button:hover {
-        background-color: #c92032;
+        background-color: #720f08;
     }
 }
 
@@ -152,4 +161,10 @@
         margin-bottom: 60px;
     }
 
+}
+
+@media (min-width: 1999px) {
+    .cardContainer {
+        max-width: 1640px;
+    }
 }

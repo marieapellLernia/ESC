@@ -12,7 +12,6 @@ h3 {
     font-size: 32px;
     font-weight: 700;
     margin: 20px;
-    
 }
 
 p {
@@ -49,6 +48,10 @@ p {
         justify-content: center;
         margin: 0;
         cursor: pointer;
+
+        &:hover {
+          background-color: #287691;
+        }
     }
 
 .btn4 {
@@ -67,6 +70,11 @@ p {
             align-items: center;
             justify-content: center;
             cursor: pointer;
+
+                    &:hover {
+          &:hover {
+          background-color: #720f08;
+        }
         }
 }
 

@@ -1,5 +1,5 @@
 header {
-  background-color: #011827;
+  background-color: #021928;
   width: 100%;
   display: flex;
   padding: 15px;
@@ -54,7 +54,7 @@ header h1 {
   left: 3%;
   width: 94%;
   height: 94%;
-  background-color: #011827;
+  background-color: #021928;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -229,6 +229,9 @@ header h1 {
   margin: 0;
   cursor: pointer;
 }
+.buttons .btn1:hover {
+  background-color: #287691;
+}
 .buttons .btn2 {
   background-color: transparent;
   font-family: "Roboto";
@@ -245,6 +248,9 @@ header h1 {
   justify-content: center;
   margin: 0;
   cursor: pointer;
+}
+.buttons .btn2:hover {
+  background-color: #720f08;
 }
 
 .btn3 {
@@ -265,6 +271,9 @@ header h1 {
   margin: 0;
   cursor: pointer;
 }
+.btn3:hover {
+  background-color: #287691;
+}
 
 .btn4 {
   background-color: transparent;
@@ -282,6 +291,9 @@ header h1 {
   justify-content: center;
   margin: 0;
   cursor: pointer;
+}
+.btn4:hover {
+  background-color: #1d4f6e;
 }
 
 .btn1::before,
@@ -408,10 +420,17 @@ header h1 {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
-.card:hover {
-  transform: translateY(-5px);
+.card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.card.show:hover {
+  transform: scale(1.03) translateY(-5px);
 }
 .card img {
   width: 100%;
@@ -459,7 +478,7 @@ header h1 {
   width: auto;
 }
 .cardContent button:hover {
-  background-color: #c92032;
+  background-color: #720f08;
 }
 
 .rating {
@@ -522,8 +541,13 @@ header h1 {
     margin-bottom: 60px;
   }
 }
+@media (min-width: 1999px) {
+  .cardContainer {
+    max-width: 1640px;
+  }
+}
 .story {
-  background-color: #011827;
+  background-color: #021928;
   height: 500px;
   margin-top: 40px;
   display: flex;
@@ -546,6 +570,12 @@ header h1 {
   font-weight: bold;
   font-family: "Roboto";
   font-size: 25px;
+  cursor: pointer;
+}
+.story button:hover {
+  background-color: #8ACFE5;
+  color: #021928;
+  border: 1px solid #021928;
 }
 
 @media (min-width: 768px) {
@@ -603,6 +633,9 @@ header h1 {
   margin: 0;
   cursor: pointer;
 }
+.promos .btn3:hover {
+  background-color: #287691;
+}
 .promos .btn4 {
   background-color: #E3170A;
   font-family: "Roboto";
@@ -619,6 +652,9 @@ header h1 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+.promos .btn4:hover {
+  background-color: #720f08;
 }
 
 @media (min-width: 768px) and (max-width: 999px) {
@@ -671,12 +707,14 @@ header h1 {
   }
 }
 footer {
-  background-color: #011827;
+  background-color: #021928;
   padding: 30px;
   color: white;
   flex-direction: column;
   display: flex;
   height: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 footer h4 {
   font-size: 18px;
@@ -766,10 +804,19 @@ footer .footerRight {
     flex-direction: column;
     gap: 0;
   }
-  footer h4 {
+  footer ul a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  footer ul a:hover {
+    color: #8ACFE5;
+  }
+  footer ul h4 {
     margin-bottom: 5px;
   }
-  footer p {
+  footer ul p {
     margin-top: 0;
   }
 }
@@ -780,7 +827,7 @@ footer .footerRight {
 }
 .challengesFilter h1 {
   text-align: center;
-  color: #011827;
+  color: #021928;
 }
 
 .filterBtn {
@@ -793,13 +840,13 @@ footer .footerRight {
   border-radius: 6px;
   border: 1px solid #8ACFE5;
   background-color: #8ACFE5;
-  color: #011827;
+  color: #021928;
   transition: all 0.2s ease;
 }
 .filterBtn:hover {
   background: #8ACFE5;
   border-color: #36769D;
-  color: #011827;
+  color: #021928;
 }
 
 .filter-interface {
@@ -817,7 +864,7 @@ footer .footerRight {
   border: 2px solid #B6BDB5;
   border-radius: 12px;
   background: #ffffff;
-  color: #011827;
+  color: #021928;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -856,7 +903,7 @@ footer .footerRight {
 .rating-text {
   margin-top: 0;
   font-size: 12px;
-  color: #011827;
+  color: #021928;
   margin-left: 58px;
 }
 
@@ -977,7 +1024,7 @@ footer .footerRight {
   margin-bottom: 8px;
   font-size: 16px;
   font-weight: 600;
-  color: #011827;
+  color: #021928;
 }
 
 @media (max-width: 999px) {
@@ -1071,7 +1118,8 @@ footer .footerRight {
   }
 }
 .modal {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -1079,6 +1127,12 @@ footer .footerRight {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s ease-in;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal-content {
@@ -1164,6 +1218,182 @@ footer .footerRight {
   background-color: #0056b3;
 }
 
+.contactHeader {
+  margin: 40px 0 20px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contactForm {
+  width: calc(100% - 54px);
+  max-width: 532px;
+  margin: 0 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  justify-self: center;
+}
+
+.contactFormTextField, .contactFormEmailField, .contactFormMessageArea {
+  border: 1px solid #011827;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 26px;
+}
+
+.contactFormTextField, .contactFormEmailField {
+  height: 42px;
+}
+
+.contactFormMessageArea {
+  resize: none;
+}
+
+.contactFormSubmitBtn {
+  background-color: #8ACFE5;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 20px;
+  height: 66px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  cursor: pointer;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 27px;
+  gap: 20px;
+}
+@media (min-width: 749px) {
+  .contactInfo {
+    gap: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 110px;
+  }
+}
+@media (min-width: 1279px) {
+  .contactInfo {
+    gap: 396px;
+    justify-content: center;
+  }
+}
+
+.contactLocationList, .contactOpenHoursList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactLocationList li p, .contactOpenHoursList li p {
+  margin: 0;
+  font-weight: normal;
+  font-size: 26px;
+}
+
+.contactLocationHeading, .contactOpenHoursHeading {
+  font-size: 34px;
+  margin: 0 0 15px;
+}
+
+.storySection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+.storySection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.storySection p {
+  font-weight: 400;
+}
+
+.leadership {
+  margin-top: 2rem;
+  text-align: center;
+}
+.leadership h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.leadership .leaderCard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+}
+.leadership .leaderCard > div {
+  text-align: center;
+  padding: 1rem;
+}
+.leadership img {
+  height: 100px;
+  border-radius: 100px;
+  margin: 20px 0 1rem 0;
+  box-shadow: 6px 6px 12px rgb(2, 25, 40);
+}
+.leadership h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.leadership p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .storySection {
+    max-width: 50%;
+  }
+  .leadership .leaderCard {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+  }
+  .leadership .leaderCard > div {
+    text-align: center;
+    padding: 1rem;
+  }
+  .leadership img {
+    height: 100px;
+    border-radius: 100px;
+    margin: 20px 0 1rem 0;
+    box-shadow: 6px 6px 12px rgb(2, 25, 40);
+  }
+  .leadership h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    margin-left: 2rem;
+  }
+  .leadership p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 80%;
+    margin: 0;
+    text-align: left;
+    margin-left: 2rem;
+  }
+}
 body {
   font-family: "Roboto";
   font-weight: bold;

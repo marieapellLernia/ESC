@@ -1,0 +1,85 @@
+.contactHeader {
+    margin: 40px 0 20px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contactForm {
+    width: calc(100% - 54px);
+    max-width: 532px;
+    margin: 0 27px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    justify-self: center;
+}
+
+.contactFormTextField, .contactFormEmailField, .contactFormMessageArea {
+    border: 1px solid #011827;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 26px;
+}
+
+.contactFormTextField, .contactFormEmailField {
+    height: 42px;
+}
+
+.contactFormMessageArea {
+    resize: none;
+}
+
+.contactFormSubmitBtn {
+    background-color: #8ACFE5;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
+    height: 66px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 27px;
+    gap: 20px;
+
+    @media (min-width: 749px) {
+        gap: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 50px 110px;
+    }
+
+    @media (min-width: 1279px) {
+        gap: 396px;
+        justify-content: center;
+    }
+}
+
+.contactLocationList, .contactOpenHoursList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contactLocationList li p, .contactOpenHoursList li p {
+    margin: 0;
+    font-weight: normal;
+    font-size: 26px;
+}
+
+.contactLocationHeading, .contactOpenHoursHeading {
+    font-size: 34px;
+    margin: 0 0 15px;
+}

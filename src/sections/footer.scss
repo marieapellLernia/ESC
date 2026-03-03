@@ -1,10 +1,12 @@
 footer {
-    background-color: #011827;
+    background-color: #021928;
     padding: 30px;
     color: white;
     flex-direction: column;
     display: flex;
     height: auto;
+    width: 100%;
+    box-sizing: border-box;
 
     h4 {
         font-size: 18px;
@@ -113,18 +115,32 @@ footer {
             }
         }
 
+        
+
         ul {
             flex-direction: column;
             gap: 0;
+
+        a {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 20px;
+
+        &:hover {
+          color: #8ACFE5;
+        }
         }
 
         h4 {
             margin-bottom: 5px;
+            
         }
 
         p {
             margin-top: 0;
         }
+        
     }
 
-}
+}}

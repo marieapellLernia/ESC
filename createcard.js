@@ -2,6 +2,8 @@
 //import { toggleModal } from "./main.js";
 import {fetchChallenges} from './api.js';
 
+
+
 //-------------------Create card-------------------//
 function createCard(challenge, container) {
   if (!container) return;
@@ -34,7 +36,19 @@ participants.innerText =
     ? min + " participants"
     : min + "-" + max + " participants";
 
-  description.innerText = challenge.description;
+  if(challenge.description.length > 50) {
+    if(challenge.description[50] == ' ') {
+      description.innerText = challenge.description.substring(0, 51);
+    }
+    else {
+      const lastSpaceCharIndex = challenge.description.substring(0, 51).lastIndexOf(' ');
+      description.innerText = challenge.description.substring(0, lastSpaceCharIndex);
+    }
+    description.innerText += '...';
+  }
+  else {
+    description.innerText = challenge.description;
+  }
 
   bookButton.classList.add("BookThisRoom","bookBtn");
   bookButton.dataset.id = challenge.id;
@@ -60,6 +74,12 @@ participants.innerText =
   cardContent.appendChild(rating);
   cardContent.appendChild(description);
   cardContent.appendChild(bookButton);
+
+
+  // start animation after appending card
+  requestAnimationFrame(() => {
+    card.classList.add("show");
+});
 
   // --- Add label/image depending on online/on-site ---
   if (challenge.type === "online") {

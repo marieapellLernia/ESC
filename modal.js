@@ -9,6 +9,7 @@ const bookingData = {
     date: null,
     fullName: null,
     email: null,
+    tel: null,
     time: null,
     participants: null
 };
@@ -62,6 +63,7 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
     if (currentModalPage === 'modal2') {
         const name = document.querySelector('#name');
         const email = document.querySelector('#email');
+        const tel = document.querySelector('#tel');
         const time = document.querySelector('#time');
         const participants = document.querySelector('#participants');
         if (!name || !name.value) {
@@ -71,6 +73,14 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
         
         if (!email || !email.value) {
             alert('Please enter your email');
+            return;
+        }
+
+        const phoneRegex = /^\d{10}$/;
+
+        // If tel is a string/number that isn't 10 digits, show error
+        if (!phoneRegex.test(String(tel.value))) {
+            alert('Please enter a valid 10-digit telephone number');
             return;
         }
         
@@ -87,6 +97,7 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
         // Adding data input from user to the object
         bookingData.fullName = name.value;
         bookingData.email = email.value;
+        bookingData.tel = tel.value;
         bookingData.time = time.value;
         bookingData.participants = participants.value;
     }
@@ -94,9 +105,16 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
     // Hide current modal and show next modal
     const currentModalPageEl = document.getElementById(currentModalPage);
     const nextModalPageEl = document.getElementById(nextModalPage);
-    
-    if (currentModalPageEl) currentModalPageEl.style.display = "none";
-    if (nextModalPageEl) nextModalPageEl.style.display = "block";
+
+    if (currentModalPageEl) {
+        currentModalPageEl.style.visibility = "hidden";
+        currentModalPageEl.style.opacity = "0";
+    }
+
+    if (nextModalPageEl) {
+        nextModalPageEl.style.visibility = "visible";
+        nextModalPageEl.style.opacity = "1";
+    }
     
     // handles the POST request. 
     if (nextModalPage === 'modal3') {
@@ -105,7 +123,6 @@ async function nextPage(currentModalPage, nextModalPage, challengeId) {
         backLink.addEventListener('click', function(){
             window.location.href = 'OurChallenges.html';
         });
-        //Object.keys(bookingData).forEach(key => {console.log(key, bookingData[key]);});
     }
 }
 
@@ -131,10 +148,14 @@ async function bookingRoomReservation(event, modal) {
                     return;
                 }    
                 modal.innerHTML = html;
-                modal.style.display = "block";
+                modal.classList.remove("show");
+                void modal.offsetWidth;
+                modal.classList.add("show");
+
                const modal1 = document.getElementById('modal1');
             if (modal1) {
-                modal1.style.display = "block";
+              modal1.style.opacity="1";
+              modal1.style.visibility="visible";
                 
                 // User cant select a past date
                 const dateInput = modal1.querySelector("#date");
@@ -175,20 +196,20 @@ async function bookingRoomReservation(event, modal) {
                             }
                         });
 
-                        // Set participants list based on min/max from API
-                        const participantsSelect = modal.querySelector("#participants");
-                        if (participantsSelect && challengeTitle) {
-                            participantsSelect.innerHTML = "";
-
+                        // Participants based on min/max from API
+                        const participantsInput = modal.querySelector("#participants");
+                        if (participantsInput && challengeTitle) {
                             const min = challengeTitle.minParticipants;
                             const max = challengeTitle.maxParticipants;
 
-                            for (let i = min; i <= max; i++) {
-                                const option = document.createElement("option");
-                                option.value = i;
-                                option.textContent = `${i} participant${i > 1 ? "s" : ""}`;
-                                participantsSelect.appendChild(option);
-                            }
+                            participantsInput.min = min;
+                            participantsInput.max = max;
+                            participantsInput.value = min;
+
+                            participantsInput.addEventListener("input", () => {
+                                if (participantsInput.value > max) participantsInput.value = max;
+                                if (participantsInput.value < min) participantsInput.value = min;
+                            });
                         }
 
                         bookingData.challengeTitle = challengeTitle;
@@ -209,7 +230,8 @@ async function bookingRoomReservation(event, modal) {
                 // Close modal 
                 closeBtns.forEach(closeBtn => {
                     closeBtn.addEventListener('click', function(){
-                        modal.style.display = "none";
+                       modal.classList.remove("show");
+                       setTimeout(() => {modal.innerHTML = "";}, 300);
                     });
                 });
 
@@ -235,7 +257,8 @@ async function bookingRoomReservation(event, modal) {
                 if (bookingForm2) {
                     bookingForm2.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        modal.style.display = "none";
+                        modal.style.visibility = "hidden";
+                        modal.style.opacity="0";
                     });
                 }
                 
@@ -243,7 +266,8 @@ async function bookingRoomReservation(event, modal) {
                 console.error('Error loading Modal:', error);
                 if (modal) {
                     modal.innerHTML = '<p>Error loading booking form. Please try again.</p>';
-                    modal.style.display = "block";
+                    modal.style.visibility = "visible";
+                    modal.style.opacity="1";
                 }
             }
         }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Redirect to main page for SPA
+        const path = window.location.pathname;
+        const repoName = 'ESC'; 
+        
+        // If it's a deep link, redirect to index.html
+        if (path.includes('.html') || path.split('/').filter(p => p).length > 1) {
+            sessionStorage.setItem('redirect', path);
+            window.location.href = window.location.origin + '/' + repoName + '/';
+        }
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=./index.html">
+    </noscript>
+</head>
+<body>
+    <p>Redirecting to home page...</p>
+</body>
+</html>

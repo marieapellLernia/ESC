@@ -1,5 +1,6 @@
 .modal {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -7,6 +8,12 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease-in;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-content {
@@ -18,6 +25,12 @@
     max-width: 500px;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 998px) {
+    .modal-content {
+        width: 80%;
+    }
 }
 
 .close {
