@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --no-source-map src/main.scss output.css",
-    "watch-sass": "sass --watch --no-source-map src/main.scss output.css"
+    "watch-sass": "sass --watch --no-source-map src/main.scss output.css",
+    "cy": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,8 @@
     "url": "https://github.com/marieapellLernia/ESC/issues"
   },
   "homepage": "https://github.com/marieapellLernia/ESC#readme",
-
   "devDependencies": {
+    "cypress": "^15.11.0",
     "sass": "^1.94.0"
-
   }
 }
